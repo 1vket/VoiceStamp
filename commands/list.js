@@ -4,7 +4,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
 	data: {
         name: "list",
-        description: "Show voice list",
+        description: "音源一覧を表示するよ",
     },
 	async execute(interaction, client) {
 

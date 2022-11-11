@@ -4,7 +4,7 @@ const rp = require('request-promise');
 module.exports = {
 	data: {
         name: "add",
-        description: "Add mp3 file",
+        description: "音源を追加するよ．mp3で指定してね．",
         options: [{
           type: 11,
           name: "mp3file",
