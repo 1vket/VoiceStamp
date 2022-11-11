@@ -3,8 +3,8 @@ const { joinVoiceChannel, createAudioResource, entersState, VoiceConnectionStatu
 
 module.exports = {
 	data: {
-    name: "gp",
-    description: "play voice!",
+    name: "play",
+    description: "音源を再生するよ",
     options: [{
       type: 3,
       name: "voice",
@@ -88,6 +88,9 @@ module.exports = {
       connection.destroy();
     }, 3_000);
     await entersState(player, AudioPlayerStatus.Idle, 30000);
+    setTimeout(async () => {
+      await interaction.deleteReply()
+    }, 10_000);
     //await interaction.editReply("End");
     //onnection.destroy();
 	}
