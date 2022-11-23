@@ -19,14 +19,14 @@ module.exports = {
   async autocomplete(interaction){
     const focusedValue = interaction.options.getFocused();
     const choices = buildChoiceLists();
-    const filtered = choices.filter(choice => choice.startsWith(focusedValue));
+    const filtered = choices.filter(choice => choice.startsWith(focusedValue)).slice(0, 20);
     await interaction.respond(
       filtered.map(choice => ({name: choice, value: choice})),
     );
   },
 	async execute(interaction, client) {
     const guild = interaction.guild;
-
+		
     var member;
     if (interaction.options.getUser("target")){
       var targetId = interaction.options.getUser("target").id; 
@@ -35,8 +35,6 @@ module.exports = {
       member = await guild.members.fetch(interaction.member.id);
     }
 
-    console.log(member);
-    console.log(member.voice);
     const memberVC = member.voice.channel;
 
 
@@ -52,7 +50,6 @@ module.exports = {
         ephemeral: true,
       });
     }
-    console.log(memberVC.members);
     if(memberVC.members.has(client.user.id)) {
       return interaction.reply({
         content: "VCにすでに接続されています．",
