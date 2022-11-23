@@ -10,6 +10,10 @@ module.exports = {
       name: "voice",
       description: "Choice voice",
       autocomplete: true,
+    },{
+      type: 6,
+      name: "target",
+      description: "target user",
     }]
   },
   async autocomplete(interaction){
@@ -22,13 +26,36 @@ module.exports = {
   },
 	async execute(interaction, client) {
     const guild = interaction.guild;
-    const member = await guild.members.fetch(interaction.member.id);
+
+    var member;
+    if (interaction.options.getUser("target")){
+      var targetId = interaction.options.getUser("target").id; 
+      member = await guild.members.fetch(targetId);
+    }else{
+      member = await guild.members.fetch(interaction.member.id);
+    }
+
+    console.log(member);
+    console.log(member.voice);
     const memberVC = member.voice.channel;
 
 
     if(!memberVC) {
       return interaction.reply({
         content: "接続先のVCが見つかりません．",
+        ephemeral: true,
+      });
+    }
+    if(!memberVC.members) {
+      return interaction.reply({
+        content: "VCに接続できません．",
+        ephemeral: true,
+      });
+    }
+    console.log(memberVC.members);
+    if(memberVC.members.has(client.user.id)) {
+      return interaction.reply({
+        content: "VCにすでに接続されています．",
         ephemeral: true,
       });
     }
