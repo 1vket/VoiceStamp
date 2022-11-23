@@ -14,16 +14,25 @@ module.exports = {
       .setTitle("GP list")
       .setColor(0x18e1ee);
 
-    var value = '';
-    for (const file of mp3Files) {
-      value += '┣ ' + file + '\n';
-    }
-
-    embed.addFields({
-      name: "GP List",
-      value: value,
-      inline: true
-    });
+		var splitNum = Math.floor(mp3Files.length / 3);
+		
+		embed.addFields(
+			{
+				name: '1',
+				value: mp3Files.slice(0,splitNum).join("\n"),
+				inline: true
+			},
+			{
+				name: '2',
+				value: mp3Files.slice(splitNum,splitNum*2).join("\n"),
+				inline: true
+			},
+			{
+				name: '3',
+				value: mp3Files.slice(splitNum*2).join("\n"),
+				inline: true
+			}
+		);
 
 		await interaction.reply({embeds: [embed]});
 	}
