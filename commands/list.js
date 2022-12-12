@@ -8,7 +8,7 @@ module.exports = {
     },
 	async execute(interaction, client) {
 
-    const mp3Files = fs.readdirSync('./mp3').filter(file => file.endsWith('.mp3'));
+    const mp3Files = fs.readdirSync('./mp3').filter(file => file.endsWith('.mp3')).map(file => file.replace(".mp3", ""));
 
     var embed = new EmbedBuilder()
       .setTitle("GP list")
