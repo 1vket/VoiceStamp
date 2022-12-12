@@ -20,7 +20,7 @@ module.exports = {
 
       rp(file.url).pipe(fileStream);
 
-      await interaction.reply("Add!");
+      await interaction.reply({ content:`追加しました!`, files:[file]});
       console.log(`mp3file add ${file.name}`);
     } else {
       await interaction.reply("追加に失敗しました");
