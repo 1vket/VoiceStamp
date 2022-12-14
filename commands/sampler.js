@@ -163,7 +163,7 @@ module.exports = {
 
     const sampler = JSON.parse(fs.readFileSync("sampler.json", "utf8"));
     var fileName = sampler[interaction.customId];
-    if(fileName == null || fileName == " "){
+    if(fileName == null || fileName == "-"){
       const fileList = buildChoiceLists();
       const fileNum = Math.floor(Math.random() * fileList.length)
       fileName = fileList[fileNum]
