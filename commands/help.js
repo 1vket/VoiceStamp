@@ -3,10 +3,10 @@ const fs = require('fs');
 module.exports = {
     data: {
       name: "help",
-      description: "コマンドの説明をするちょ",
+      description: "コマンドの説明をするよ",
     },
     async execute(interaction) {
-        let str
+        let str = ''
         const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {

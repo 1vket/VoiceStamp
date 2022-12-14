@@ -61,6 +61,24 @@ client.on("interactionCreate", async (interaction) => {
         })
       }
     }
+  } else if (interaction.isButton()) {
+    const command = commands["sampler"]; //fix someday
+    try {
+      await command.button(interaction, client);
+    } catch (error) {
+      console.error(error);
+      try{
+        await interaction.reply({
+          content: "Command Error",
+          ephemeral: true,
+        })
+      } catch (err) {
+        await interaction.editReply({
+          content: "Command Error",
+          ephemeral: true,
+        })
+      }
+    }
   }
 });
 
