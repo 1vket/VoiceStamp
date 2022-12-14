@@ -72,7 +72,7 @@ module.exports = {
       await interaction.editReply("ボタン番号を設定してください");
       return;
     } else if (buttonNumber) {
-      sampler[buttonNumber] = " ";
+      sampler[buttonNumber] = "-";
 
       fs.writeFileSync("sampler.json", JSON.stringify(sampler));
       await interaction.editReply("ボイスを削除しました");
