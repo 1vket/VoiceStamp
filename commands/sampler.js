@@ -100,7 +100,7 @@ module.exports = {
           new ButtonBuilder()
             .setCustomId(String(label))
             //.setLabel(String(label))
-            .setLabel("  ")
+            .setLabel("-")
             .setStyle(style),
         );
       }
